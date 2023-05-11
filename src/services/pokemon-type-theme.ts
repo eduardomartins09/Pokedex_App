@@ -1,0 +1,117 @@
+export const pokemonTypeThemes = [
+    {
+        name: 'normal',
+        color: '#909C9F',
+        icon: '/images/pokemon-types-icons/normal.svg',
+        radialColor_1: 'hsla(192, 7%, 59%, 1)',
+    },
+    {
+        name: 'fighting',
+        color: '#D83A6A',
+        icon: '/images/pokemon-types-icons/fighting.svg',       
+        radialColor_1: 'hsla(342, 67%, 54%, 1)',
+    },
+    {
+        name: 'flying',
+        color: '#91A8DA',
+        icon: '/images/pokemon-types-icons/flying.svg',      
+        radialColor_1: 'hsla(221, 50%, 71%, 1)',
+    },
+    {
+        name: 'poison',
+        color: '#AB69CA',
+        icon: '/images/pokemon-types-icons/poison.svg',        
+        radialColor_1: 'hsla(281, 48%, 60%, 1)',
+    },
+    {
+        name: 'ground',
+        color: '#DD7748',
+        icon: '/images/pokemon-types-icons/ground.svg',
+        radialColor_1: 'hsla(19, 69%, 57%, 1)',
+    },
+    {
+        name: 'rock',
+        color: '#C7B48A',
+        icon: '/images/pokemon-types-icons/rock.svg',
+        radialColor_1: 'hsla(41, 35%, 66%, 1)',
+    },
+    {
+        name: 'bug',
+        color: '#8FBF2C',
+        icon: '/images/pokemon-types-icons/bug.svg',
+        radialColor_1: 'hsla(80, 63%, 46%, 1)',
+    },
+    {
+        name: 'ghost',
+        color: '#4B68AA',
+        icon: '/images/pokemon-types-icons/ghost.svg',      
+        radialColor_1: 'hsla(222, 39%, 48%, 1)',
+    },
+    {
+        name: 'steel',
+        color: '#5591A3',
+        icon: '/images/pokemon-types-icons/steel.svg',       
+        radialColor_1: 'hsla(194, 31%, 49%, 1)',
+    },
+    {
+        name: 'fire',
+        color: '#FD9D50',
+        icon: '/images/pokemon-types-icons/fire.svg',       
+        radialColor_1: 'hsla(27, 100%, 63%, 1)',
+    },
+    {
+        name: 'water',
+        color: '#4E92D5',
+        icon: '/images/pokemon-types-icons/water.svg',       
+        radialColor_1: 'hsla(210, 62%, 57%, 1)',
+    },
+    {
+        name: 'grass',
+        color: '#64BA5F',
+        icon: '/images/pokemon-types-icons/grass.svg',     
+        radialColor_1: 'hsla(117, 40%, 55%, 1)',
+    },
+    {
+        name: 'electric',
+        color: '#E0C439',
+        icon: '/images/pokemon-types-icons/electric.svg',
+        radialColor_1: 'hsla(50, 73%, 55%, 1)',
+    },
+    {
+        name: 'psychic',
+        color: '#F57278',
+        icon: '/images/pokemon-types-icons/psychic.svg',       
+        radialColor_1: 'hsla(357, 87%, 70%, 1)',
+    },
+    {
+        name: 'ice',
+        color: '#74CBC2',
+        icon: '/images/pokemon-types-icons/ice.svg',       
+        radialColor_1: 'hsla(174, 46%, 63%, 1)',
+    },
+    {
+        name: 'dragon',
+        color: '#096DC3',
+        icon: '/images/pokemon-types-icons/dragon.svg',        
+        radialColor_1: 'hsla(208, 91%, 40%, 1)',
+    },
+    {
+        name: 'dark',
+        color: '#585362',
+        icon: '/images/pokemon-types-icons/dark.svg',
+        radialColor_1: 'hsla(260, 8%, 35%, 1)',
+    },
+    {
+        name: 'fairy',
+        color: '#EB8EE6',
+        icon: '/images/pokemon-types-icons/fairy.svg',        
+        radialColor_1: 'hsla(303, 70%, 74%, 1)',
+    },
+    {
+        name: 'shadow',
+        color: '#585362',
+        icon: '/images/pokemon-types-icons/dark.svg',
+        radialColor_1: 'hsla(260, 8%, 35%, 1)',
+    },
+]
+
