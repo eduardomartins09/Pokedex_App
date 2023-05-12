@@ -24,17 +24,11 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className='logo-and-select'>
-        {location.pathname === "/" && (
-          <img src="/images/logoPokedex.png" alt="logo-pokedex" onClick={() => navigate("/")} className='logoHome' />
-        )}
-        {location.pathname === "/" && (
-          <img src="/images/app-logo.png" alt="logo-pokedex" onClick={() => navigate("/")} className='logoHomeSmall' />
-        )}
+      <div className='logo-and-select'>   
+        <img src="/images/app-logo.png" alt="logo-pokedex" className='logoHomeSmall' />
         {location.pathname !== "/" && (
         <div 
           className="types-icon" 
-          style={{ backgroundColor: "rgb(156, 156, 156)" }}
           onClick={comeBack}
         >
           <div 
@@ -52,7 +46,7 @@ const Navbar = () => {
         </div>
         )}
         {location.pathname === "/" && (
-          <select onChange={(e) => getAllPokemonsByType(e.target.value)}>
+          <select value={typeActual} onChange={(e) => getAllPokemonsByType(e.target.value)}>
             <option value="all">All</option>
             {pokemonTypeThemes.map((type, key) => (
               <option 

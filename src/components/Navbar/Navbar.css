@@ -1,10 +1,10 @@
 nav {
-  width: 100vw;
-  background-color: rgb(206, 6, 39);
-  padding: 1rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  width: 100vw;
+  padding: 1rem;
+  background-color: rgb(206, 6, 39);
 }
 
 nav input {
@@ -28,30 +28,34 @@ nav select {
   outline: none;
   border: 1px solid #333;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 nav select option {
-  padding: 2rem;
   font-size: 1.2em;
   text-transform: capitalize;
-}
-
-.logoHome {
-  width: fit-content;
-  cursor: pointer;
-  height: 50px;
 }
 
 .logoHomeSmall {
   width: fit-content;
   cursor: pointer;
   height: 90px;
-  display: none;
 }
 
 nav .types-icon {
   align-items: center;
   justify-content: center;
+  background-color: rgb(156, 156, 156);
+  transition: 300ms linear; 
+}
+
+nav .types-icon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+nav .types-icon:hover p {
+  color: #FFF;
 }
 
 @media (max-width: 910px) {
@@ -64,14 +68,6 @@ nav .types-icon {
   nav input {
     width: 200px;
     margin-left: 0.5rem;
-  }
-
-  .logoHome {
-    display: none;
-  }
-
-  .logoHomeSmall {
-    display: block;
   }
 }
 

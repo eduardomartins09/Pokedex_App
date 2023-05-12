@@ -7,8 +7,8 @@ import Loading from '../../components/Loading/Loading'
 import './Home.css'
 
 const Home = () => {
-  const { pokemons, maxOfPokemonsType, loading, setMaxOfPokemonsType  } = useContext(PokemonContext)
-    
+  const { pokemons, maxOfPokemonsType, loading, nameFilter, setMaxOfPokemonsType  } = useContext(PokemonContext)
+
   return (
     <>
       {loading 
@@ -29,10 +29,15 @@ const Home = () => {
                 /> 
               ))
             }
-            {pokemons.length >= maxOfPokemonsType && (
-            <div className='button-div'>
-              <button onClick={() => setMaxOfPokemonsType(maxOfPokemonsType+10)}>Load more</button>   
-            </div>
+            {maxOfPokemonsType < 1280 && (
+              <div className='button-div'>
+                <button 
+                  disabled={nameFilter !== "" ? true : false} 
+                  onClick={() => setMaxOfPokemonsType(maxOfPokemonsType+10)}
+                >
+                  Load more
+                </button>   
+              </div>
             )}     
           </div>          
         ) 

@@ -50,6 +50,7 @@
 
 .types-icon {
     display: flex;
+    align-items: center;
     color: white;
     border-radius: 5rem 2rem 2rem 5rem;
 }
@@ -96,10 +97,15 @@
     border-top-right-radius: 8px;
 }
 
+.tab:hover {
+    background-color: rgb(206, 6, 39);
+    color: #FFFFFF;
+}
+
 .active-tab {
     border: 1px solid gray;
-    background-color: #FFF;
-    color: red;
+    background-color: rgb(206, 6, 39);
+    color: #FFFFFF;
 }
 
 .contents {

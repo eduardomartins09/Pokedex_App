@@ -24,15 +24,17 @@ const PokemonCard = ({ nome, types, img, id }: PokemonCardProps) => {
   
   return (
       <div className="pokemon" onClick={() => navigate(`/pokemonDetails/${id}`)}>
-        <div className="img-container">
-          {img 
-            ? (
-              <img src={img} alt="img-pokemon" />
-            )
-            : (
-              <img src="/images/loading-pokeball.gif" style={{ width: "55px" }} alt="img-rolling-pokeball" />
-            )
-          }
+        <div className="pokemon-img-container">
+          <div className="img-container">
+            {img 
+              ? (
+                <img src={img} alt="img-pokemon" />
+              )
+              : (
+                <img src="/images/loading-pokeball.gif" style={{ width: "55px" }} alt="img-rolling-pokeball" />
+              )
+            }
+          </div>
         </div>
         <div className="info">
           <span className='number'>#{AddLeadingZeros(id)}</span>

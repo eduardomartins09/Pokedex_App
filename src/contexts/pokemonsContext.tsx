@@ -11,6 +11,7 @@ type InitValue = {
     maxOfPokemonsType: number
     loading: boolean
     typeActual: string
+    nameFilter: string
     setMaxOfPokemonsType: Dispatch<SetStateAction<number>>   
     pokemonFilter: (name: string) => void;
     getAllPokemonsByType: (type: string) => void;
@@ -21,16 +22,18 @@ const PokemonContext = createContext({} as InitValue)
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     const [pokemons, setPokemons] = useState<Pokemon[]>([])
+    const [nameFilter, setNameFilter] = useState<string>("")
     const [typeActual, setTypeActual] = useState("all")
     const [maxOfPokemonsType, setMaxOfPokemonsType] = useState<number>(10)
     const [loading, setLoading] = useState(false)
 
+    const maxPokemons = 1500
+
     const getAllPokemons = useCallback(async () => {
-      const response = await api.get(`/pokemon?limit=${maxOfPokemonsType}&offset=0`)
-      const { results } = response.data
-  
+      const response = await api.get(`/pokemon?limit=${maxPokemons}&offset=0`)
+        
       const payloadPokemons = await Promise.all(
-        results.map(async (pokemon: Pokemon) => {
+        response.data.results.map(async (pokemon: Pokemon) => {
           const { id, height, sprites, types, stats, moves, abilities } = await getMoreInfo(pokemon.url)
         
           return {
@@ -48,23 +51,21 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
       
       setPokemons(payloadPokemons) 
       setLoading(true) 
-    }, [maxOfPokemonsType])
+    }, [])
 
     const getAllPokemonsByType = useCallback(async (type: string) => {                 
       setTypeActual(type)
+      setNameFilter("")
 
-      if (typeActual === "all") {
+      if (type === "all") {
+        setLoading(false)
         getAllPokemons()
       }
 
-      if (type !== typeActual) { 
-        setLoading(false)
-        setMaxOfPokemonsType(10)
-      }
-
-      if (typeActual !== "all") {
-        const response = await api.get(`/type/${typeActual}`)
+      if (type !== "all") {
+        const response = await api.get(`/type/${type}`)
         const { pokemon } = response.data
+        
         
         const payloadPokemons = await Promise.all(
           pokemon.map(async (pokemon: Pokemon) => {
@@ -85,7 +86,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
         setLoading(true)
         setPokemons(payloadPokemons)
       }  
-    }, [typeActual, getAllPokemons])
+    }, [getAllPokemons])
 
     useEffect(() => {      
       if (typeActual === "all")    {      
@@ -106,6 +107,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     }
   
     const pokemonFilter = (name: string) => {
+      setNameFilter(name)
       const filteredPokemons = []
 
       if (name === "") {
@@ -113,10 +115,11 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
           getAllPokemonsByType(typeActual)
           return
         } else {
+          setLoading(false)
           getAllPokemons() 
         }        
       }
-
+      
       for (const i in pokemons) {
         if (pokemons[i].name.includes(name.toLowerCase())) {
             filteredPokemons.push(pokemons[i])
@@ -127,7 +130,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     }
 
     return (
-      <PokemonContext.Provider value={{ pokemons, maxOfPokemonsType, loading, typeActual, pokemonFilter, getAllPokemonsByType, setMaxOfPokemonsType, getAllPokemons }}>
+      <PokemonContext.Provider value={{ pokemons, maxOfPokemonsType, loading, typeActual, nameFilter, pokemonFilter, getAllPokemonsByType, setMaxOfPokemonsType, getAllPokemons }}>
         {children}
       </PokemonContext.Provider>
     )

@@ -6,6 +6,17 @@
 	padding: 20px;
 	text-align: center;
 	cursor: pointer;
+	transition: 500ms linear; 
+}
+
+.pokemon:hover {
+	transform: scale(1.1);
+}
+
+.pokemon-img-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 .pokemon .img-container {
