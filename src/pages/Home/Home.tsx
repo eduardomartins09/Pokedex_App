@@ -14,36 +14,37 @@ const Home = () => {
       {loading 
         ? (         
           <div className='container'>
-            {pokemons &&
-              pokemons.slice(0, maxOfPokemonsType).map((pokemon) => (
-                <PokemonCard 
-                  key={pokemon.id} 
-                  nome={pokemon.name} 
-                  types={pokemon.types} 
-                  img={
-                    pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default'] 
-                    ? pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default']
-                    : pokemon.sprites['other']['official-artwork']['front_default']
-                  } 
-                  id={pokemon.id} 
-                /> 
-              ))
-            }
-            {maxOfPokemonsType < 1280 && (
-              <div className='button-div'>
-                <button 
-                  disabled={nameFilter !== "" ? true : false} 
-                  onClick={() => setMaxOfPokemonsType(maxOfPokemonsType+10)}
-                >
-                  Load more
-                </button>   
-              </div>
-            )}     
+            <div className='container-scroll'>
+              {pokemons &&
+                pokemons.slice(0, maxOfPokemonsType).map((pokemon) => (
+                  <PokemonCard 
+                    key={pokemon.id} 
+                    nome={pokemon.name} 
+                    types={pokemon.types} 
+                    img={
+                      pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default'] 
+                      ? pokemon.sprites.versions['generation-v']['black-white']['animated']['front_default']
+                      : pokemon.sprites['other']['official-artwork']['front_default']
+                    } 
+                    id={pokemon.id} 
+                  /> 
+                ))
+              }
+              {maxOfPokemonsType < 1280 && (
+                <div className='button-div'>
+                  <button 
+                    disabled={nameFilter !== "" ? true : false} 
+                    onClick={() => setMaxOfPokemonsType(maxOfPokemonsType+10)}
+                  >
+                    Load more
+                  </button>   
+                </div>
+              )}  
+            </div>
           </div>          
         ) 
         : (
           <div className='container'>
-            <Loading text='Loading...' />
             <Loading text='Loading...' />
             <Loading text='Loading...' />
           </div>

@@ -59,10 +59,13 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
 
       if (type === "all") {
         setLoading(false)
+        setMaxOfPokemonsType(10)
         getAllPokemons()
       }
 
       if (type !== "all") {
+        setLoading(false)
+        setMaxOfPokemonsType(10)
         const response = await api.get(`/type/${type}`)
         const { pokemon } = response.data
         

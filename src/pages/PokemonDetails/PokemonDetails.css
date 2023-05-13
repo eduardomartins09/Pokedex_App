@@ -2,8 +2,7 @@
     display: flex;
 	align-items: space-between;
 	justify-content: space-between;
-	margin: 0 auto;
-    margin-top: 2rem;
+	margin: 2rem auto;
 	max-width: 1200px;
 	padding: 2%;
     background: rgba(255, 255, 255, 0.23);
@@ -166,6 +165,13 @@
    border-bottom: 1px solid rgb(230, 230, 230);
 }
 
+@media (max-width: 1200px) {
+    .container-center {
+        margin-left: 1rem;
+		margin-right: 1rem;
+    }
+}
+
 @media (max-width: 1051px) {
     .active-content-moves {
         grid-template-columns: repeat(2, 1fr);
@@ -182,9 +188,10 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 790px) {
     .container-center {
        display: block;
+       margin: 2rem auto;
        width: 580px;
     }
 
