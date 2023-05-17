@@ -51,7 +51,12 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
       setLoading(true) 
     }, [maxOfPokemonsType])
 
-    const getAllPokemonsByType = useCallback(async (type: string) => {                 
+    const getAllPokemonsByType = useCallback(async (type: string) => {      
+      if (typeActual !== type) {
+        setLoading(false)
+        setMaxOfPokemonsType(10)
+      }
+      
       setTypeActual(type)
       setNameFilter("")
 
@@ -62,8 +67,6 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
       }
 
       if (type !== "all") {
-        setLoading(false)
-        setMaxOfPokemonsType(10)
         const response = await api.get(`/type/${type}`)
         const { pokemon } = response.data
                 
@@ -86,7 +89,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
         setLoading(true)
         setPokemons(payloadPokemons)
       }  
-    }, [getAllPokemons])
+    }, [getAllPokemons, typeActual])
 
     useEffect(() => {      
       if (typeActual === "all")    {      
