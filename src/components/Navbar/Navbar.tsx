@@ -60,7 +60,7 @@ const Navbar = () => {
           </select> 
         )}
       </div>
-      {location.pathname === "/" && (
+      {location.pathname === "/" && typeActual !== "all"  && (
         <div>
           <input 
             type="text" 

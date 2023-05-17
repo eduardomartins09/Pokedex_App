@@ -27,10 +27,8 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     const [maxOfPokemonsType, setMaxOfPokemonsType] = useState<number>(10)
     const [loading, setLoading] = useState(false)
 
-    const maxPokemons = 1500
-
     const getAllPokemons = useCallback(async () => {
-      const response = await api.get(`/pokemon?limit=${maxPokemons}&offset=0`)
+      const response = await api.get(`/pokemon?limit=${maxOfPokemonsType}&offset=0`)
         
       const payloadPokemons = await Promise.all(
         response.data.results.map(async (pokemon: Pokemon) => {
@@ -51,7 +49,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
       
       setPokemons(payloadPokemons) 
       setLoading(true) 
-    }, [])
+    }, [maxOfPokemonsType])
 
     const getAllPokemonsByType = useCallback(async (type: string) => {                 
       setTypeActual(type)
@@ -68,8 +66,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
         setMaxOfPokemonsType(10)
         const response = await api.get(`/type/${type}`)
         const { pokemon } = response.data
-        
-        
+                
         const payloadPokemons = await Promise.all(
           pokemon.map(async (pokemon: Pokemon) => {
             const { id, height, sprites, types, stats, moves, abilities } = await getMoreInfo(pokemon.pokemon.url)
